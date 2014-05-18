@@ -52,26 +52,29 @@ object FunSets {
 
   /**
    * Returns whether all bounded integers within `s` satisfy `p`.
+   * start loop at the positive bound. On each itheration decrement by 1
+   * end the recursion when a is less than the negative of the bound
+   * in between check that the set contains the value and the predicate holds 
    */
   def forall(s: Set, p: Int => Boolean): Boolean = {
     def iter(a: Int): Boolean = {
-      if (???) ???
-      else if (???) ???
-      else iter(???)
+      if (a<(-bound)) true //its in the sett
+      else if (contains(s,a) && !p(a)) false
+      else iter(a-1)
     }
-    iter(???)
+    iter(bound)
   }
 
   /**
    * Returns whether there exists a bounded integer within `s`
    * that satisfies `p`.
    */
-  def exists(s: Set, p: Int => Boolean): Boolean = ???
+def exists(s: Set, p: Int => Boolean): Boolean = !forall(s,(x => !p(x)))
 
   /**
    * Returns a set transformed by applying `f` to each element of `s`.
    */
-  def map(s: Set, f: Int => Int): Set = ???
+    def map(s: Set, f: Int => Int): Set = (a: Int)=>f(a) == a
 
   /**
    * Displays the contents of a set

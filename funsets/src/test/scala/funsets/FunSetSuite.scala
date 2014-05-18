@@ -77,6 +77,7 @@ class FunSetSuite extends FunSuite {
     val s1 = singletonSet(1)
     val s2 = singletonSet(2)
     val s3 = singletonSet(3)
+    val s4 = singletonSet(4)
   }
 
   /**
@@ -99,17 +100,18 @@ class FunSetSuite extends FunSuite {
        */
       assert(contains(s1, 1), "Singleton")
     }
- // }
+ // }	
 
   //ignore("union contains all elements") {
+     test("Testing the union method") {
     new TestSets {
       val s = union(s1, s2)
       assert(contains(s, 1), "Union 1")
       assert(contains(s, 2), "Union 2")
       assert(!contains(s, 3), "Union 3")
     }
-  //}
-   test("Testing the contains method") {
+  }
+   test("Testing the difference method") {
     new TestSets { 
       val a = singletonSet(1) 
       val b = singletonSet(2) 
@@ -118,6 +120,18 @@ class FunSetSuite extends FunSuite {
       val e = union(b,c)
       val difference=diff(d,e)
       assert(contains(difference,1),"differnce contains 1")
+      
+    }
+   }
+    test("Testing the intersect method") {
+    new TestSets { 
+      val a = singletonSet(1) 
+      val b = singletonSet(2) 
+      val c = singletonSet(3) 
+      val d=union(a,b);
+      val e = union(b,c)
+      val unionVal=intersect(d,e)
+      assert(contains(unionVal,2),"intersect contains 2")
       
     }
    }
@@ -137,5 +151,33 @@ class FunSetSuite extends FunSuite {
       assert(!contains(f,-1), "f doesnt contain -1") 
     }
     }
+     test("Testing the for all method") {
+    new TestSets { 
+      
+      val forAllSet=union(union(s1,s2),union(s3,s4))
+        assert( forall(forAllSet, _<5))
+    	assert( !forall(forAllSet, _<4)) //assert less that set
+    	assert(forall(forAllSet, _>(-4)))
+    	assert(!forall(forAllSet, _<(-4)))
+    }
+     }
+       test("Testing the exists method") {
+    new TestSets { 
+      
+      val forAllSet=union(union(s1,s2),union(s3,s4))
+        assert( exists(forAllSet, _>3))
+    	//assert( !forall(forAllSet, _>5)) //assert less that set
     
+    }
+     }
+   ignore("Testing the map method") {
+    new TestSets { 
+      
+      val forAllSet=union(union(s1,s2),union(s3,s4))
+        val returnedSet=map(forAllSet, _*3)
+        
+    	assert( contains(returnedSet,12)) //assert less that set
+    
+    }
+     }
 }
