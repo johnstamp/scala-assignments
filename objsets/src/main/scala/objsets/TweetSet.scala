@@ -81,6 +81,8 @@ abstract class TweetSet {
    * and be implemented in the subclasses?
    */
   def descendingByRetweet: TweetList = ???
+		  
+  def mostRetweetedAcc(acc: Tweet): Tweet= ???
 
 
   /**
@@ -138,11 +140,14 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
 		  else 
 		    left.filterAcc(p, right.filterAcc(p, acc))
   }
-
-/* def accumulateMostRetweeted(acc : Tweet):Tweet = 
-  {
-    right.accumulateMostRetweeted(left.accumulateMostRetweeted(if (elem.retweets > acc.retweets) elem else acc))
-  }*/
+ 
+  
+  override def mostRetweeted: Tweet ={
+    mostRetweetedAcc(elem)
+  }
+  override def mostRetweetedAcc(acc: Tweet): Tweet = {
+    right.mostRetweetedAcc(left.mostRetweetedAcc(if (elem.retweets > acc.retweets) elem else acc))
+  }
   /**
    * The following methods are already implemented
    */
@@ -190,6 +195,7 @@ object Nil extends TweetList {
 class Cons(val head: Tweet, val tail: TweetList) extends TweetList {
   def isEmpty = false
 }
+
 
 
 object GoogleVsApple {

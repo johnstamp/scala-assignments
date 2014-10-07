@@ -1,0 +1,11 @@
+[0m[[0minfo[0m] [0m[32mFunSetSuite:[0m[0m
+[0m[[0minfo[0m] [0m[32m- string take[0m[0m
+[0m[[0minfo[0m] [0m[32m- adding ints[0m[0m
+[0m[[0minfo[0m] [0m[32m- contains is implemented[0m[0m
+[0m[[0minfo[0m] [0m[32m- Testing the union method[0m[0m
+[0m[[0minfo[0m] [0m[32m- Testing the difference method[0m[0m
+[0m[[0minfo[0m] [0m[32m- Testing the intersect method[0m[0m
+[0m[[0minfo[0m] [0m[32m- Testing the filter method[0m[0m
+[0m[[0minfo[0m] [0m[32m- Testing the for all method[0m[0m
+[0m[[0minfo[0m] [0m[32m- Testing the exists method[0m[0m
+[0m[[0minfo[0m] [0m[32m- Testing the map method[0m[0m
